@@ -1,0 +1,48 @@
+:root{
+  --bg: #f1f3f4;
+  --toolbar: #ffffff;
+  --note-shadow: 0 8px 18px rgba(15,15,15,0.12);
+}
+*{box-sizing:border-box;font-family:Inter, Roboto, system-ui, -apple-system, 'Segoe UI', Arial}
+html,body{height:100%;margin:0}
+body{
+  background: linear-gradient(180deg,#f8fafc, #eef2f7);
+  -webkit-font-smoothing:antialiased;
+}
+.toolbar{
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--toolbar);box-shadow:0 1px 0 rgba(0,0,0,0.04);position:sticky;top:0;z-index:1000
+}
+.toolbar h1{font-size:16px;margin:0;font-weight:600}
+.controls{display:flex;gap:8px}
+button{background:#111827;color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+button#clearBtn{background:#ef4444}
+button:active{transform:translateY(1px)}
+
+#board{
+  position:relative; height:calc(100vh - 60px); overflow:auto; padding:18px;
+}
+
+.note{
+  position:absolute; width:200px; min-height:140px; padding:12px 10px 8px; border-radius:10px;
+  box-shadow:var(--note-shadow); cursor:grab; user-select:none; touch-action:none; display:flex; flex-direction:column;
+}
+.note.dragging{cursor:grabbing; box-shadow: 0 18px 38px rgba(15,15,15,0.22);}
+.note .toolbar-note{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.note .dot{width:10px;height:10px;border-radius:50%;margin-right:8px}
+.note .actions{display:flex;gap:6px}
+.note .actions button{padding:4px 6px;border-radius:6px;font-size:12px}
+.note .content{flex:1; outline:none; padding-right:4px; overflow:auto}
+.note .content:empty:before{content:"Double-click to edit";opacity:0.6;font-style:italic}
+
+.note[data-color="yellow"]{background:#fff59a}
+.note[data-color="pink"]{background:#ffcccb}
+.note[data-color="green"]{background:#b9f6ca}
+.note[data-color="blue"]{background:#b3e5fc}
+.note[data-color="orange"]{background:#ffd7a8}
+
+.color-picker{display:flex;gap:6px}
+.color-swatch{width:18px;height:18px;border-radius:4px;border:1px solid rgba(0,0,0,0.12);cursor:pointer}
+
+@media (max-width:520px){
+  .note{width:160px}
+}
